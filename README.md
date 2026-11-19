@@ -4,7 +4,9 @@
 
 <h1 align="center">GRID</h1>
 
+
 <p align="center">
+  <strong>Check Out Here: https://grid-planner-v1.onrender.com/ </strong><br />
   <strong>Adaptive task, schedule, and habit planner built for real life.</strong><br />
   Time-block around your free hours, protect daily streaks, get lock-screen deadline reminders, and let <strong>Echo</strong> rearrange your plan whenever life happens.
 </p>
