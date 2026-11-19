@@ -1,0 +1,12 @@
+{
+  "projectId": "grid-planner-v1",
+  "appId": "1:748901878156:web:5ba69772f29098ec3feea9",
+  "apiKey": "AIzaSyDurRKw1PCw9xrkD45OZ9sEeKdU7Drl1Hg",
+  "authDomain": "grid-planner-v1.firebaseapp.com",
+  "firestoreDatabaseId": "ai-studio-grid-aafaac5b-20c3-4a86-a921-2d01a020f34d",
+  "storageBucket": "grid-planner-v1.firebasestorage.app",
+  "messagingSenderId": "748901878156",
+  "measurementId": "",
+  "oAuthClientId": "748901878156-mq9ighcfbarivc3fonddls3ea53i3ljp.apps.googleusercontent.com",
+  "recaptchaSiteKey": ""
+}

@@ -1,0 +1,143 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-display: 'Bricolage Grotesque', system-ui, -apple-system, sans-serif;
+    --font-sans: 'DM Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+    --bg-canvas: #EAF6FF;
+    --bg-surface: #FFFFFF;
+    --bg-subtle: #D8ECFC;
+    --border-subtle: #141923;
+    --text-primary: #141923;
+    --text-secondary: #42526B;
+    --accent: #E3242B;
+    --accent-hover: #C81D24;
+    --accent-soft: rgba(227, 36, 43, 0.16);
+    --accent-contrast: #FFFFFF;
+
+    --card-border-width: 2px;
+    --card-shadow: 4px 4px 0px #141923;
+    --card-shadow-sm: 2px 2px 0px #141923;
+    --card-radius: 14px;
+    --pattern-opacity: 0.07;
+  }
+
+  .dark {
+    --bg-canvas: #0B111E;
+    --bg-surface: #131C2E;
+    --bg-subtle: #1C2942;
+    --border-subtle: #5271A3;
+    --text-primary: #F1F6FF;
+    --text-secondary: #9CB2CF;
+    --accent: #E3242B;
+    --accent-hover: #F2434A;
+    --accent-soft: rgba(227, 36, 43, 0.22);
+    --accent-contrast: #FFFFFF;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-canvas);
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, var(--accent-soft), transparent 70%),
+      radial-gradient(color-mix(in srgb, var(--text-primary) 9%, transparent) 1.25px, transparent 1.25px);
+    background-size: 100% 100%, 24px 24px;
+    background-attachment: fixed;
+    color: var(--text-primary);
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color 180ms ease, color 180ms ease;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  .font-mono, .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+}
+
+.tactile-card {
+  background-color: var(--bg-surface);
+  border: var(--card-border-width) solid var(--border-subtle);
+  box-shadow: var(--card-shadow);
+  border-radius: var(--card-radius);
+}
+
+.tactile-card-interactive {
+  background-color: var(--bg-surface);
+  border: var(--card-border-width) solid var(--border-subtle);
+  box-shadow: var(--card-shadow);
+  border-radius: var(--card-radius);
+  transition: transform 150ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 150ms ease;
+}
+
+.tactile-card-interactive:hover {
+  transform: translate(-1px, -2px);
+}
+
+.comic-btn {
+  border: var(--card-border-width) solid var(--border-subtle);
+  box-shadow: var(--card-shadow-sm);
+  transition: transform 120ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 120ms ease, background-color 150ms ease;
+}
+
+.comic-btn:hover:not(:disabled) {
+  transform: translate(-1px, -1px);
+}
+
+.comic-btn:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+.scrollbar-sleek::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.scrollbar-sleek::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-sleek::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--text-secondary) 35%, transparent);
+  border-radius: 9999px;
+}
+
+.pb-safe {
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+}
+
+@media print {
+  aside,
+  nav,
+  header,
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .tactile-card {
+    box-shadow: none !important;
+    break-inside: avoid;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

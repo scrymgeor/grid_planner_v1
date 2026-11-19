@@ -1,0 +1,122 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Private user account profile created upon Google Sign-In.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "email": { "type": "string", "format": "email", "maxLength": 320 },
+        "displayName": { "type": "string", "maxLength": 120 },
+        "photoURL": { "type": "string", "maxLength": 500 },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "displayName", "photoURL", "createdAt", "updatedAt"]
+    },
+    "TaskDoc": {
+      "title": "TaskDoc",
+      "description": "A scheduled or pending user task with priority, energy level, duration, and deadline.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "ownerId": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "title": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "notes": { "type": "string", "maxLength": 1000 },
+        "priority": { "type": "string", "enum": ["high", "medium", "low"] },
+        "energyRequired": { "type": "string", "enum": ["deep", "medium", "light"] },
+        "durationMinutes": { "type": "integer" },
+        "deadline": { "type": "string", "minLength": 10, "maxLength": 40 },
+        "status": { "type": "string", "enum": ["pending", "scheduled", "completed", "missed"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "completedAt": { "type": "string", "maxLength": 40 }
+      },
+      "required": [
+        "id",
+        "ownerId",
+        "title",
+        "notes",
+        "priority",
+        "energyRequired",
+        "durationMinutes",
+        "deadline",
+        "status",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "HabitDoc": {
+      "title": "HabitDoc",
+      "description": "A recurring daily habit (e.g. LeetCode, Gym, Reading) with independent streak check-in dates.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "ownerId": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "title": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "category": { "type": "string", "enum": ["Coding", "Fitness", "Study", "Wellness", "Other"] },
+        "targetLabel": { "type": "string", "maxLength": 60 },
+        "color": { "type": "string", "minLength": 4, "maxLength": 16 },
+        "completedDates": { "type": "array" },
+        "archived": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": [
+        "id",
+        "ownerId",
+        "title",
+        "category",
+        "targetLabel",
+        "color",
+        "completedDates",
+        "archived",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "PlannerStateDoc": {
+      "title": "PlannerStateDoc",
+      "description": "User's weekly free hours, scheduled blocks, streak history, mood, and appearance settings.",
+      "type": "object",
+      "properties": {
+        "ownerId": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "mood": { "type": "string", "enum": ["focused", "energized", "tired", "stressed", "overwhelmed"] },
+        "todayOverrideDate": { "type": "string", "maxLength": 20 },
+        "todayOverrideWindows": { "type": "array" },
+        "weeklyFreeHours": { "type": "object" },
+        "blocks": { "type": "array" },
+        "dailyHistory": { "type": "object" },
+        "settings": { "type": "object" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": [
+        "ownerId",
+        "mood",
+        "weeklyFreeHours",
+        "blocks",
+        "dailyHistory",
+        "settings",
+        "updatedAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Authenticated user's private profile document."
+    },
+    "/users/{userId}/tasks/{taskId}": {
+      "schema": { "$ref": "#/entities/TaskDoc" },
+      "description": "User's tasks with deadlines, priorities, and durations."
+    },
+    "/users/{userId}/habits/{habitId}": {
+      "schema": { "$ref": "#/entities/HabitDoc" },
+      "description": "User's independent habit streak trackers (LeetCode, Gym, Reading, etc.)."
+    },
+    "/users/{userId}/planner/{plannerId}": {
+      "schema": { "$ref": "#/entities/PlannerStateDoc" },
+      "description": "User's free hours, generated schedule blocks, streak history, and theme customization."
+    }
+  }
+}

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <!-- Bold tactile app tile -->
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="#E3242B" stroke="#141923" stroke-width="22"/>
+  <!-- Subtle top highlight sheen -->
+  <path d="M128 38 H384 C434 38 474 78 474 128 V142 C474 96 434 62 384 62 H128 C78 62 38 96 38 142 V128 C38 78 78 38 128 38 Z" fill="#FF6B70" opacity="0.45"/>
+
+  <!-- Hard-offset neo-tactile ink shadow behind the modular G -->
+  <g transform="translate(14 14)" fill="#141923">
+    <path d="M168 112 H304 C317 112 328 123 328 136 V176 C328 189 317 200 304 200 H196 V312 H316 V284 H260 C247 284 236 273 236 260 V244 C236 231 247 220 260 220 H376 C389 220 400 231 400 244 V348 C400 377 377 400 348 400 H168 C139 400 116 377 116 348 V164 C116 135 139 112 168 112 Z"/>
+    <rect x="336" y="112" width="64" height="64" rx="18"/>
+  </g>
+
+  <!-- Main cream modular G monogram -->
+  <path
+    d="M168 112 H304 C317 112 328 123 328 136 V176 C328 189 317 200 304 200 H196 V312 H316 V284 H260 C247 284 236 273 236 260 V244 C236 231 247 220 260 220 H376 C389 220 400 231 400 244 V348 C400 377 377 400 348 400 H168 C139 400 116 377 116 348 V164 C116 135 139 112 168 112 Z"
+    fill="#FFFDF7"
+    stroke="#141923"
+    stroke-width="18"
+    stroke-linejoin="round"
+  />
+
+  <!-- Subtle internal grid notch lines -->
+  <line x1="116" y1="200" x2="196" y2="200" stroke="#141923" stroke-width="14"/>
+  <line x1="116" y1="312" x2="196" y2="312" stroke="#141923" stroke-width="14"/>
+  <line x1="286" y1="312" x2="286" y2="400" stroke="#141923" stroke-width="14"/>
+
+  <!-- Energized blue focus-block crossbar inside the G -->
+  <rect x="236" y="220" width="164" height="64" rx="18" fill="#3898FF" stroke="#141923" stroke-width="16"/>
+
+  <!-- Completed emerald streak spark tile in upper-right -->
+  <rect x="336" y="112" width="64" height="64" rx="18" fill="#168A45" stroke="#141923" stroke-width="16"/>
+</svg>
