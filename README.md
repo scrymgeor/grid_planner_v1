@@ -66,25 +66,3 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ---
 
-## Deploying to Render
-
-1. Create a new **Web Service** on [Render](https://render.com) connected to this repository.
-2. Configure the service commands:
-   - **Build Command:** `npm install --include=dev --legacy-peer-deps && npm run build`
-   - **Start Command:** `npx tsx server.ts`
-3. Add your environment variables in Render (`NODE_ENV=production`, `GEMINI_API_KEY`, `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`, `PUSH_CRON_SECRET`).
-4. Add your live Render hostname (e.g. `your-app.onrender.com`) under **Firebase Console → Authentication → Settings → Authorized domains**.
-5. *(Optional for free tier background notifications)* Schedule a 5-minute GET ping (e.g. via [cron-job.org](https://cron-job.org)) to:
-   ```
-   https://your-app.onrender.com/api/push/cron?secret=YOUR_PUSH_CRON_SECRET
-   ```
-
----
-
-## Scripts
-
-| Command | Description |
-| --- | --- |
-| `npm run dev` | Start development server on port 3000 |
-| `npm run build` | Build production frontend bundle (`dist/`) |
-| `npm run lint` | Run TypeScript type checks (`tsc --noEmit`) |
